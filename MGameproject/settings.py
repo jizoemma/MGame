@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+#from django.contrib.auth import login
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'loginapp',
+    'dereste',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'MGameproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'tenplates'],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +129,7 @@ STATICFILES_DIRS = [
 #LOGIN_URL = 'login'
 
 AUTH_USER_MODEL = 'loginapp.User'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL ='top'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#login(request, user, backend='django.contrib.auth.backends.ModelBackend)
