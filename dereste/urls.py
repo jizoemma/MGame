@@ -1,6 +1,7 @@
 from django.urls import path
-from . from import views
+from .views import DeresteIndexView
 
 urlpatterns = [
-  path('', views.index, name='index'),
+  #path('', views.index, name='index'),
+  path('', DeresteIndexView.as_view(), name='dereste'),
 ]
