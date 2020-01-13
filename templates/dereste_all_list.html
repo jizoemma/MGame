@@ -1,0 +1,16 @@
+{% extends "base2.html" %}
+{% block content %}
+  <p>This is Dereste All Songs</p>
+  <div class="container">
+    {% for item in object_list %}
+      <div class="alert alert-success" role="alert">
+        <p>{{item.name}}</p>
+        <p>{{item.level}}</p>
+        <p>{{item.type}}</p>
+        <p>{{item.notes}}</p>
+        <p>{{item.grade}}</p>
+      </div>
+    {% endfor %}
+    {% include "pagination.html" %}
+  </div>
+{% endblock content %}
