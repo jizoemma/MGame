@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from .models import Songs
+from .filters import SongsFilter
 
 # Create your views here.
 
