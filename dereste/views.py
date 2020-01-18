@@ -13,3 +13,7 @@ class AllListView(ListView):
   model = Songs
   paginate_by = 20
   template_name = 'dereste_all_list.html'
+
+def song_all_list(request):
+    f = SongsFilter(request.GET, queryset=Songs.objects.all())
+    return render(request, 'dereste_all_list.html', {'filter': f})

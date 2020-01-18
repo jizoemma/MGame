@@ -2,6 +2,7 @@
 {% block content %}
   <p>This is Dereste All Songs</p>
   <div class="container">
+    <!-- All Lists from view class
     {% for item in object_list %}
       <div class="alert alert-success" role="alert">
         <p>{{item.name}}</p>
@@ -11,6 +12,15 @@
         <p>{{item.grade}}</p>
       </div>
     {% endfor %}
+    -->
+      <form action="" method="get">
+      {{ filter.form.as_p }}
+      <input type="submit" />
+      {% for obj in filter.qs %}
+        {{ obj.grade }} - ${{ obj.name }}<br />
+        {{ obj.type}} - {{ obj.level}} - {{ obj.notes }}
+      {% endfor %}
+    </form>
     {% include "pagination.html" %}
   </div>
 {% endblock content %}
