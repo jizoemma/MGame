@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'crispy_forms',
     'loginapp',
     'dereste',
 ]
@@ -134,3 +135,4 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL ='top'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #login(request, user, backend='django.contrib.auth.backends.ModelBackend)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
