@@ -16,11 +16,34 @@
       <form action="" method="get">
       {{ filter.form.as_p }}
       <input type="submit" />
-      {% for obj in filter.qs %}
-        {{ obj.grade }} - ${{ obj.name }}<br />
-        {{ obj.type}} - {{ obj.level}} - {{ obj.notes }}
-      {% endfor %}
-    </form>
-    {% include "pagination.html" %}
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">曲名</th>
+            <th scope="col">難易度</th>
+            <th scope="col">タイプ</th>
+            <th scope="col">レベル</th>
+            <th scope="col">ノーツ数</th>
+            <th scope="col">Id</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in filter.qs %}
+          <tr>
+            <th scope="row">{{ obj.name }}</th>
+            <td>{{ obj.grade }}</td>
+            <td>{{ obj.type}}</td>
+            <td>{{ obj.level}}</td>
+            <td>{{ obj.notes }}</td>
+            <td>{{ obj.pk }}</td>
+          </tr>
+          {% include "pagination.html" %}
+        {% endfor %}
+        </tbody>
+      </table>
+
+    
   </div>
 {% endblock content %}

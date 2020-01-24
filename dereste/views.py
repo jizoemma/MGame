@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView 
 from .models import Songs
 from .filters import SongsFilter
+
 
 # Create your views here.
 
@@ -14,6 +15,18 @@ class AllListView(ListView):
   paginate_by = 20
   template_name = 'dereste_all_list.html'
 
+# Create
+class SongCreate(CreateView):
+  model = Songs
+  fields = ['name','level','type','notes','grade',]
+  template_name = "dereste_create.html"
+
+# Update
+class SongUpdate(UpdateView):
+  model = Songs
+  fields = ['name','level','type','notes','grade',]
+
+# all List
 def song_all_list(request):
     f = SongsFilter(request.GET, queryset=Songs.objects.all())
     return render(request, 'dereste_all_list.html', {'filter': f})

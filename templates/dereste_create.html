@@ -1,0 +1,8 @@
+{% extends "base2.html" %}
+{% block content %}
+  <p>This is Dereste Create</p>
+  <form class="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="submit">
+  </form>
+{% endblock content %}
