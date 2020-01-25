@@ -4,7 +4,19 @@
 {% block content %}
   <p>This is Dereste Create</p>
 
-  {% crispy form %}
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p>
+        {% crispy form %}
+        <button type="submit" class="btn btn-outline-secondary">
+          新曲登録
+        </button>
+      </p>
+    </div>
+  </div>
+  
 
   <!--
   <form class="" method="post">
