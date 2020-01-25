@@ -3,25 +3,15 @@
 {% crispy create_form create_form.helper %}
 {% block content %}
   <p>This is Dereste Create</p>
-
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+  <div class="card w-50">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title">新曲追加</h5>
       <p>
-        {% crispy form %}
-        <button type="submit" class="btn btn-outline-secondary">
-          新曲登録
-        </button>
-      </p>
+          {% crispy form %}
+          <button type="submit" class="btn btn-outline-secondary">
+            新曲登録
+          </button>
+        </p>
     </div>
   </div>
-  
-
-  <!--
-  <form class="" method="post">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-primary" value="submit">
-  </form>
-  -->
 {% endblock content %}
