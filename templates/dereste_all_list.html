@@ -2,32 +2,45 @@
 {% block content %}
   <p>This is Dereste All Songs</p>
   <div class="container">
-    <!-- All Lists from view class
-    {% for item in object_list %}
-      <div class="alert alert-success" role="alert">
-        <p>{{item.name}}</p>
-        <p>{{item.level}}</p>
-        <p>{{item.type}}</p>
-        <p>{{item.notes}}</p>
-        <p>{{item.grade}}</p>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Dereste Song Search</h5>
+            <p>
+              {% load crispy_forms_tags%}
+              <form action="" method="get" class="bootstrap4">
+                {{ filter.form | crispy }}
+                <input type="submit" />
+              </form> 
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
       </div>
-    {% endfor %}
-    -->
-      <form action="" method="get">
-      {{ filter.form.as_p }}
-      <input type="submit" />
-      </form>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">How To Use</h5>
+            <p>新曲登録</p>
+            <a href="create" class="btn btn-primary">新曲登録</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
 
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">曲名</th>
-            <th scope="col">難易度</th>
-            <th scope="col">タイプ</th>
-            <th scope="col">レベル</th>
-            <th scope="col">ノーツ数</th>
+            <th scope="col">Song Name</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Type</th>
+            <th scope="col">Level</th>
+            <th scope="col">Notes</th>
             <th scope="col">Id</th>
-            <th scope="col">変更/削除</th>
+            <th scope="col">Modify/Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -40,8 +53,8 @@
             <td>{{ obj.notes }}</td>
             <td>{{ obj.pk }}</td>
             <td>
-                <a href="#" class="btn btn-outline-success">変更</a>
-                <a href="#" class="btn btn-outline-danger">削除</a>
+                <a href="#" class="btn btn-outline-success">modify</a>
+                <a href="#" class="btn btn-outline-danger">delete</a>
             </td>
           </tr>
           {% include "pagination.html" %}
