@@ -1,8 +1,15 @@
 {% extends "base2.html" %}
+{% load crispy_forms_tags %}
+{% crispy create_form create_form.helper %}
 {% block content %}
   <p>This is Dereste Create</p>
+
+  {% crispy form %}
+
+  <!--
   <form class="" method="post">
     {% csrf_token %}
     <input type="submit" class="btn btn-primary" value="submit">
   </form>
+  -->
 {% endblock content %}

@@ -27,17 +27,22 @@
             <th scope="col">レベル</th>
             <th scope="col">ノーツ数</th>
             <th scope="col">Id</th>
+            <th scope="col">変更/削除</th>
           </tr>
         </thead>
         <tbody>
         {% for obj in filter.qs %}
           <tr>
-            <th scope="row">{{ obj.name }}</th>
+            <th scope="row" width="200">{{ obj.name }}</th>
             <td>{{ obj.grade }}</td>
             <td>{{ obj.type}}</td>
             <td>{{ obj.level}}</td>
             <td>{{ obj.notes }}</td>
             <td>{{ obj.pk }}</td>
+            <td>
+                <a href="#" class="btn btn-outline-success">変更</a>
+                <a href="#" class="btn btn-outline-danger">削除</a>
+            </td>
           </tr>
           {% include "pagination.html" %}
         {% endfor %}
