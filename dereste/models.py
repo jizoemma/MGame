@@ -3,22 +3,22 @@ from django.db import models
 # Create your models here.
 class Songs(models.Model):
   SONG_TYPE = (
-    ('Cu', 'Cute'),
-    ('Co', 'Cool'),
-    ('Pa', 'Passion'),
-    ('Al', 'All'),
+    ('Cute', 'Cute'),
+    ('Cool', 'Cool'),
+    ('Passion', 'Passion'),
+    ('All', 'All'),
   )
   DIFFICULTY = (
-    ('De', 'DEBUT'),
-    ('Re', 'REGULAR'),
-    ('Pr', 'PRO'),
-    ('Ma', 'MASTER'),
-    ('MP', 'MASTER_PLUS'),
-    ('LMP', 'Legend_MASTER_PLUS'),
-    ('Fo', 'FORTE'),
-    ('Pi', 'PIANO'),
-    ('Li', 'LIGHT'),
-    ('Ti', 'TRICK')
+    ('DEBUT', 'DEBUT'),
+    ('REGULAR', 'REGULAR'),
+    ('PRO', 'PRO'),
+    ('MASTER', 'MASTER'),
+    ('MASTER_PLUS', 'MASTER_PLUS'),
+    ('Legend_MASTER_PLUS', 'Legend_MASTER_PLUS'),
+    ('FORTE', 'FORTE'),
+    ('PIANO', 'PIANO'),
+    ('LIGHT', 'LIGHT'),
+    ('TRICK', 'TRICK')
   )
 
   name = models.CharField(max_length=50, default='新曲名を追加してください')
