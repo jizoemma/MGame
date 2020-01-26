@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView 
 from .models import Songs
 from .filters import SongsFilter
+from .forms import CreateSongForm, CreateHelperForm
 
 # Create your views here.
 
@@ -17,11 +18,10 @@ class AllListView(ListView):
 # Create
 class SongCreate(CreateView):
   model = Songs
-  fields = ['name','level','type','notes','grade']
+  form_class = CreateSongForm
+  #form_class = CreateHelperForm
   template_name = "dereste_create.html"
   success_url = "../allList"
-  #def get_success_url(self):
-  #  return reverse('dereste_all_list.html')
 
 # Update
 class SongUpdate(UpdateView):

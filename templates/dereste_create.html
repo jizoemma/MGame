@@ -1,14 +1,16 @@
 {% extends "base2.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
   <p>This is Dereste Create</p>
   <div class="card w-50">
     <div class="card-body">
       <h5 class="card-title">新曲追加</h5>
       <p>
+        <!--{% crispy form %}-->
+        
         <form method="post">
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ form }}
           <p>上記内容でよろしければ登録ボタンを押してください</p>
           <button type="submit" class="btn btn-outline-secondary">
             登録
