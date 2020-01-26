@@ -4,7 +4,6 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 from .models import Songs
 from .filters import SongsFilter
 
-
 # Create your views here.
 
 class DeresteIndexView(TemplateView):
@@ -18,8 +17,11 @@ class AllListView(ListView):
 # Create
 class SongCreate(CreateView):
   model = Songs
-  fields = ['name','level','type','notes','grade',]
+  fields = ['name','level','type','notes','grade']
   template_name = "dereste_create.html"
+  success_url = "../allList"
+  #def get_success_url(self):
+  #  return reverse('dereste_all_list.html')
 
 # Update
 class SongUpdate(UpdateView):
@@ -30,3 +32,5 @@ class SongUpdate(UpdateView):
 def song_all_list(request):
     f = SongsFilter(request.GET, queryset=Songs.objects.all())
     return render(request, 'dereste_all_list.html', {'filter': f})
+
+# create detail result
