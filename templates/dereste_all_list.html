@@ -53,7 +53,7 @@
             <td>{{ obj.pk }}</td>
             <td>
                 <a href="#" class="btn btn-outline-success">modify</a>
-                <a href="#" class="btn btn-outline-danger">delete</a>
+                <a href="{% url 'delete' obj.pk %}" class="btn btn-outline-danger">delete</a>
             </td>
           </tr>
           {% include "pagination.html" %}
