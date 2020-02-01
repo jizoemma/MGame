@@ -52,7 +52,7 @@
             <td>{{ obj.notes }}</td>
             <td>{{ obj.pk }}</td>
             <td>
-                <a href="#" class="btn btn-outline-success">modify</a>
+                <a href="{% url 'update' obj.pk %}" class="btn btn-outline-success">update</a>
                 <a href="{% url 'delete' obj.pk %}" class="btn btn-outline-danger">delete</a>
             </td>
           </tr>

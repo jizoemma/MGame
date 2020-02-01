@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import  UpdateView, DeleteView 
+from django.views.generic.edit import DeleteView ,UpdateView
 from .models import Songs
 from .filters import SongsFilter
 from .forms import CreateSongForm, CreateHelperForm
@@ -28,7 +28,9 @@ class SongCreate(CreateView):
 # Update
 class SongUpdate(UpdateView):
   model = Songs
-  fields = ['name','level','type','notes','grade',]
+  fields = ['name', 'level','type', 'notes','grade']
+  template_name = "songs_update_form.html"
+  success_url = reverse_lazy('allList')
 
 # all List
 def song_all_list(request):

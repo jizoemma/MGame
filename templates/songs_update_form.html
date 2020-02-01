@@ -1,0 +1,20 @@
+{% extends "base2.html" %}
+{% block content %}
+  <p>This is Dereste Create</p>
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title">曲編集</h5>
+      <p>
+        <form method="post">
+          {% csrf_token %}
+          
+          <p>{{ form.as_p }}を更新しますか？</p>
+          <button type="submit" class="btn btn-outline-secondary">
+            更新
+          </button> 
+        </form>
+
+        </p>
+    </div>
+  </div>
+{% endblock content %}
