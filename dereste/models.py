@@ -1,4 +1,5 @@
 from django.db import models
+from loginapp.models import *
 
 # Create your models here.
 class Songs(models.Model):
@@ -37,3 +38,27 @@ class Songs(models.Model):
   def get_absolute_url(self):
       return reverse(
     "dereste_detail", kwargs={"pk": self.pk})
+
+class Challenges(models.Model):
+  COMBO_EVAL =(
+    ("x","x"),
+    ("C","C"),
+    ("B","B"),
+    ("A","A"),
+    ("S","S"),
+  )
+  cdate = models.DateField(auto_now_add=True)
+  #usr_email = models.ForeignKey(User, on_delete=models.CASCADE)
+  song_id = models.ForeignKey(Songs,on_delete=models.CASCADE)
+  score = models.IntegerField(default=0)
+  perfect = models.IntegerField(default=0)
+  great = models.IntegerField(default=0)
+  nice = models.IntegerField(default=0)
+  bad = models.IntegerField(default=0)
+  miss = models.IntegerField(default=0)
+  result = models.CharField(max_length=4, choices=COMBO_EVAL, default='x')
+  combo = models.IntegerField(default=0)
+  #rate = models.BigdecimalField(default=0)
+
+  def __str__(self):
+    return super().__str__()
