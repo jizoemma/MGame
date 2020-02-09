@@ -1,0 +1,69 @@
+{% extends "base2.html" %}
+{% block content %}
+<p>This is Dereste All Songs</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Dereste Result Search</h5>
+          <!--  <p>
+              {% load crispy_forms_tags%}
+              <form action="" method="get" class="bootstrap4">
+                {{ filter.form | crispy }}
+                <button type="submit" class="btn btn-outline-info">
+                  Search!
+                </butonn>
+              </form> 
+            </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">How To Use</h5>
+          <p>成績登録</p>
+          <a href="{% url 'ch_create' %}" class="btn btn-primary">成績登録</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Song ID</th>
+        <th scope="col">Score</th>
+        <th scope="col">Perfect</th>
+        <th scope="col">Great</th>
+        <th scope="col">Nice</th>
+        <th scope="col">Bad</th>
+        <th scope="col">Miss</th>
+        <th scope="col">Result</th>
+        <th scope="col">Combo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for obj in filter.qs %}
+      <tr>
+        <th scope="row" width="200">{{ obj.cdate }}</th>
+        <td>{{ obj.song_id }}</td>
+        <td>{{ obj.score}}</td>
+        <td>{{ obj.perfect}}</td>
+        <td>{{ obj.great }}</td>
+        <td>{{ obj.nice }}</td>
+        <td>{{ obj.bad }}</td>
+        <td>{{ obj.miss }}</td>
+        <td>{{ obj.result }}</td>
+        <td>{{ obj.combo }}</td>
+      </tr>
+      {% include "pagination.html" %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+{% endblock content %}

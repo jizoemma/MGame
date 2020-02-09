@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import DeleteView ,UpdateView
 from .models import Songs, Challenges
-from .filters import SongsFilter
-from .forms import CreateSongForm, CreateHelperForm
+from .filters import SongsFilter,ChallengesFilter
+from .forms import CreateSongForm, CreateChallengesForm
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
@@ -32,7 +32,7 @@ class SongUpdate(UpdateView):
   template_name = "songs_update_form.html"
   success_url = reverse_lazy('allList')
 
-# all List
+# songs all List
 def song_all_list(request):
     f = SongsFilter(request.GET, queryset=Songs.objects.all())
     return render(request, 'dereste_all_list.html', {'filter': f})
@@ -48,3 +48,13 @@ class ChallengesDelete(DeleteView):
   template_name = 'challenges_confirm_delete.html'
   model = Challenges
   success_url = reverse_lazy('ch_allList')
+class ChallengesCreate(CreateView):
+  model = Challenges
+  form_class = CreateChallengesForm
+  template_name = "dereste_challenges_create.html"
+  success_url = "../ch_allList"
+
+# challenges all List
+def challenges_all_list(request):
+    f = ChallengesFilter(request.GET, queryset=Challenges.objects.all())
+    return render(request, 'dereste_challenges_all_list.html', {'filter': f})

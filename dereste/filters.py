@@ -1,5 +1,5 @@
 import django_filters
-from .models import Songs
+from .models import Songs, Challenges
 
 class SongsFilter(django_filters.FilterSet):
   SONG_TYPE = (
@@ -28,4 +28,12 @@ class SongsFilter(django_filters.FilterSet):
     model = Songs
     fields = [
       'level',
+    ]
+
+class ChallengesFilter(django_filters.FilterSet):
+  queryset = Challenges.objects.all()
+  class Meta:
+    model = Challenges
+    fields = [
+      'song_id',
     ]

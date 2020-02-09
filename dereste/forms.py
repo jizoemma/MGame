@@ -1,5 +1,5 @@
 from django import forms
-from .models import Songs
+from .models import Songs, Challenges
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -11,6 +11,13 @@ class CreateSongForm(forms.ModelForm):
   class Meta:
     model = Songs
     fields = ("name", "level","type","notes","grade",)
+
+class CreateChallengesForm(forms.ModelForm):
+  class Meta:
+    model = Challenges
+    fields = ("song_id","score","perfect","great",
+              "nice", "bad", "miss", "result", "combo")
+
 
 class CreateHelperForm(forms.Form):
   def __init__(self, *args, **kwargs):
