@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import DeleteView ,UpdateView
-from .models import Songs
+from django.views.generic.edit import DeleteView, UpdateView
+from .models import Songs, Challenges
 from .filters import SongsFilter
 from .forms import CreateSongForm, CreateHelperForm
 from django.urls import reverse_lazy, reverse
-from django.views.generic import TemplateView,ListView,DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 # Create your views here.
 
@@ -37,8 +37,14 @@ def song_all_list(request):
     f = SongsFilter(request.GET, queryset=Songs.objects.all())
     return render(request, 'dereste_all_list.html', {'filter': f})
 
-# Delete
+# Songs Delete
 class SongDelete(DeleteView):
   template_name = 'songs_confirm_delete.html'
   model = Songs
   success_url = reverse_lazy('allList')
+
+# Challenges Delete
+class ChallengesDelete(DeleteView):
+  template_name = 'challenges_confirm_delete.html'
+  model = Challenges
+  success_url = reverse_lazy('ch_allList')

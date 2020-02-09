@@ -1,0 +1,10 @@
+{
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Path": "C:\\Users\\schige\\Anaconda3\\Scripts\\autopep8.exe",
+    "python.linting.flake8Path": "C:\\Users\\schige\\Anaconda3\\Scripts\\flake8.exe",
+    "python.linting.flake8Enabled": true,
+    "python.pythonPath": "C:\\Users\\schige\\Anaconda3\\python.exe",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.lintOnSave": true
+}
