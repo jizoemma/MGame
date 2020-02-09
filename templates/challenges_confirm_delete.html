@@ -1,0 +1,20 @@
+{% extends "base2.html" %}
+{% block content %}
+  <p>This is Dereste Result Delete</p>
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title">成績削除</h5>
+      <p>
+        <form method="post">
+          {% csrf_token %}
+          
+          <p>"{{ object }}"を削除しますか？</p>
+          <button type="submit" class="btn btn-outline-secondary">
+            削除
+          </button> 
+        </form>
+
+        </p>
+    </div>
+  </div>
+{% endblock content %}

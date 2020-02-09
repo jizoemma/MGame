@@ -43,6 +43,7 @@
         <th scope="col">Miss</th>
         <th scope="col">Result</th>
         <th scope="col">Combo</th>
+        <th scope="col">Modify/Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -58,6 +59,10 @@
         <td>{{ obj.miss }}</td>
         <td>{{ obj.result }}</td>
         <td>{{ obj.combo }}</td>
+        <td>
+          <!--<a href="{% url 'update' obj.pk %}" class="btn btn-outline-success">update</a> -->
+          <a href="{% url 'ch_delete' obj.pk %}" class="btn btn-outline-danger">delete</a>
+      </td>
       </tr>
       {% include "pagination.html" %}
       {% endfor %}
