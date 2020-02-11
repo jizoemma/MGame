@@ -74,3 +74,12 @@ class ChallengesCreate(CreateView):
 def challenges_all_list(request):
     f = ChallengesFilter(request.GET, queryset=Challenges.objects.all())
     return render(request, 'dereste_challenges_all_list.html', {'filter': f})
+
+# ChallengesUpdate
+
+
+class ChallengesUpdate(UpdateView):
+    model = Challenges
+    fields = ['score', 'perfect', 'great', 'nice', 'bad', 'miss', 'result', 'combo', ]
+    template_name = "challenges_update_form.html"
+    success_url = reverse_lazy('ch_allList')

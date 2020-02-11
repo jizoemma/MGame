@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DeresteIndexView, AllListView, SongCreate, SongUpdate, SongDelete, ChallengesCreate
+from .views import DeresteIndexView, AllListView, SongCreate, SongUpdate, SongDelete, ChallengesCreate, ChallengesUpdate
 from dereste import views
 
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
   path('ch_create/', views.ChallengesCreate.as_view(), name='ch_create'),
   path('ch_allList/', views.challenges_all_list, name='ch_allList'),
   path('ch_delete/<int:pk>/', views.ChallengesDelete.as_view(), name='ch_delete'),
+  path('ch_update/<int:pk>', views.ChallengesUpdate.as_view(), name='ch_update'),
 ]

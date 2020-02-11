@@ -49,7 +49,7 @@ class Challenges(models.Model):
   )
   cdate = models.DateField(auto_now_add=True)
   #usr_email = models.ForeignKey(User, on_delete=models.CASCADE)
-  song_id = models.ForeignKey(Songs,on_delete=models.CASCADE)
+  song_id = models.ForeignKey(Songs, on_delete=models.CASCADE)
   score = models.IntegerField(default=0)
   perfect = models.IntegerField(default=0)
   great = models.IntegerField(default=0)
