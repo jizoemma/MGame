@@ -1,0 +1,40 @@
+{% extends "base2.html" %}
+{% block content %}
+    <form action="." method="POST">
+        <table>
+           {{form}}
+        </table>
+        {% csrf_token %}
+        <button type="submit">検索</button>
+    </form>
+    <hr>
+    <!--{% for song in song_list %}
+        曲名:{{song.name}}
+        難易度:{{song.grade}}
+        タイプ:{{song.type}}
+        レベル:{{song.level}}
+    {% endfor %}-->
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Song ID</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Type</th>
+            <th scope="col">Level</th>
+            <th scope="col">Modify/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for song in song_list %}
+          <tr>
+            <td>{{ song.name }}</td>
+            <td>{{ song.grade}}</td>
+            <td>{{ song.type}}</td>
+            <td>{{ song.level }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock content %}

@@ -14,4 +14,5 @@ urlpatterns = [
   path('ch_allList/', views.challenges_all_list, name='ch_allList'),
   path('ch_delete/<int:pk>/', views.ChallengesDelete.as_view(), name='ch_delete'),
   path('ch_update/<int:pk>', views.ChallengesUpdate.as_view(), name='ch_update'),
+  path('song_select/', views.refine, name='song_select'),
 ]

@@ -3,10 +3,10 @@ from django.http import HttpResponse
 from django.views.generic.edit import DeleteView, UpdateView
 from .models import Songs, Challenges
 from .filters import SongsFilter, ChallengesFilter
-from .forms import CreateSongForm, CreateChallengesForm
+from .forms import CreateSongForm, CreateChallengesForm, SongsRefineForm
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
-
+from django.template import RequestContext
 # Create your views here.
 
 
@@ -83,3 +83,21 @@ class ChallengesUpdate(UpdateView):
     fields = ['score', 'perfect', 'great', 'nice', 'bad', 'miss', 'result', 'combo', ]
     template_name = "challenges_update_form.html"
     success_url = reverse_lazy('ch_allList')
+
+
+def refine(request):
+    
+    form = SongsRefineForm()
+    song_list = Songs.objects.all()
+    
+    if request.method == 'POST':
+        grade_data = request.POST.get('grade')
+        type_data = request.POST.get('type')
+        level_data = request.POST.get('level')
+        if level_data == '':
+            song_list = song_list.filter(grade=grade_data).filter(type=type_data)
+        else:
+            song_list = song_list.filter(grade=grade_data).filter(type=type_data).filter(level=level_data)
+    
+    context = {'form': form, 'song_list': song_list}
+    return render(request, 'dereste_challenges_select.html', context)
