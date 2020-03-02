@@ -32,6 +32,7 @@
             <td>{{ song.grade}}</td>
             <td>{{ song.type}}</td>
             <td>{{ song.level }}</td>
+            <td><a href="{% url 'ch_detailcreate' song.pk %}" class="btn btn-outline-success">Challenge!</a></td>
           </tr>
           {% endfor %}
         </tbody>

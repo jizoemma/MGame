@@ -2,6 +2,7 @@ from django import forms
 from .models import Songs, Challenges
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from django.utils import timezone
 
 # class SelectSingleForm(forms.Form):
 #  songs = forms.ModelChoiceField(models.Songs.objects, label='Song',
@@ -54,6 +55,28 @@ class SongsRefineForm(forms.Form):
         ]
 
 #SongsRefineFormSet = forms.formset_factory(SongsRefineForm)
+
+
+COMBO_EVAL =(
+    ("x","x"),
+    ("C","C"),
+    ("B","B"),
+    ("A","A"),
+    ("S","S"),
+)
+
+
+class ChallengesDetailCreateForm(forms.Form):
+    cdate = forms.DateField(initial=timezone.now(), disabled=True)
+    # song_id = forms.CharField(disabled=True)
+    score = forms.IntegerField(initial=0)
+    perfect = forms.IntegerField(initial=0)
+    great = forms.IntegerField(initial=0)
+    nice = forms.IntegerField(initial=0)
+    bad = forms.IntegerField(initial=0)
+    miss = forms.IntegerField(initial=0)
+    result = forms.ChoiceField(label='コンボ評価', choices=COMBO_EVAL, required=True, initial='x')
+    combo = forms.IntegerField(initial=0)
 
 
 class CreateHelperForm(forms.Form):

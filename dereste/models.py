@@ -33,7 +33,7 @@ class Songs(models.Model):
   #    verbose_name_pl
   #  #ural = _("s")
   def __str__(self):
-      return self.name
+      return '%s [%s(%d)]' % (self.name, self.grade, self.level)
 
   def get_absolute_url(self):
       return reverse(

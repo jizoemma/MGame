@@ -13,6 +13,7 @@ urlpatterns = [
   path('ch_create/', views.ChallengesCreate.as_view(), name='ch_create'),
   path('ch_allList/', views.challenges_all_list, name='ch_allList'),
   path('ch_delete/<int:pk>/', views.ChallengesDelete.as_view(), name='ch_delete'),
-  path('ch_update/<int:pk>', views.ChallengesUpdate.as_view(), name='ch_update'),
+  path('ch_update/<int:pk>/', views.ChallengesUpdate.as_view(), name='ch_update'),
   path('song_select/', views.refine, name='song_select'),
+  path('ch_detailcreate/<int:pk>/', views.ch_detailCreate, name='ch_detailcreate'),
 ]

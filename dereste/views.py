@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import DeleteView, UpdateView
 from .models import Songs, Challenges
 from .filters import SongsFilter, ChallengesFilter
-from .forms import CreateSongForm, CreateChallengesForm, SongsRefineForm
+from .forms import CreateSongForm, CreateChallengesForm, SongsRefineForm, ChallengesDetailCreateForm
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.utils import timezone
 from django.template import RequestContext
 # Create your views here.
 
@@ -101,3 +102,22 @@ def refine(request):
     
     context = {'form': form, 'song_list': song_list}
     return render(request, 'dereste_challenges_select.html', context)
+
+
+def ch_detailCreate(request, pk):
+    #ss = get_object_or_404(Songs, pk=pk)
+    ss = Songs.objects.get(pk=pk)
+    form = ChallengesDetailCreateForm(request.POST or None)
+    ch = Challenges
+    if request.method == 'POST' and form.is_valid:
+        ch = form.save()
+        ch.son_id = ss
+        ch.cdate = timezone.now()
+        context = {'form': form}
+        return render(request, 'dereste_challenges_detail.html', context)
+    else:
+        form.chose_song = ss
+        context = {'form': form, 'song_name': ss, 'song_id': pk}
+        return render(request, 'dereste_challenges_detail.html', context)
+        
+        
